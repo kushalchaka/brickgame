@@ -1,0 +1,92 @@
+package game;
+
+import java.awt.image.BufferedImage;
+import javax.imageio.ImageIO;
+import javax.swing.JOptionPane;
+import javax.swing.Timer;
+
+import java.io.*;
+import java.util.Random;
+import java.awt.*;
+
+public class Ball 
+{
+	public static int xPos = 300, yPos = 250;
+	public double xSpeed = 2, ySpeed = 2;
+	private BufferedImage ball;
+	
+	Ball()
+	{
+		loadImage();
+	}
+
+	private void loadImage() 
+	{
+		try 
+		{
+			ball = ImageIO.read(new File("src/images/redball.png"));
+		} 
+		catch (IOException e) 
+		{
+			e.printStackTrace();
+		}
+	}
+	
+	public void changeBall()
+	{
+		try {
+			ball = ImageIO.read(new File("src/images/ball.PNG"));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void move()
+	{
+		xPos += xSpeed;
+		if (xPos < 0)
+		{
+			xPos = 0;
+			xSpeed *= -1;
+		}
+		if (xPos > BrickPanel.WIDTH - ball.getWidth())
+		{
+			xPos = BrickPanel.WIDTH - ball.getWidth();
+			xSpeed *= -1;
+		}
+		yPos += ySpeed;
+		if (yPos < 0)
+		{
+			yPos = 0;
+			ySpeed *= -1;
+		}
+		if (yPos > BrickPanel.HEIGHT - ball.getHeight()) // checks bottom of the screen
+		{
+		}
+	}
+	
+	public void setSpeed(double d, double e)
+	{
+		xSpeed += d;
+		ySpeed += e;
+	}
+	
+	public void setPos(int x, int y, int speed)
+	{
+		xPos = x;
+		yPos = y;
+		ySpeed *= speed;
+	}
+	
+	public void draw(Graphics g)
+	{
+		Graphics2D g2d = (Graphics2D)g; //casting graphics to graphics2d
+		g2d.drawImage(ball, xPos, yPos, null);
+	}
+	
+	public Rectangle getBounds()
+	{
+		return new Rectangle(xPos, yPos, ball.getWidth(), ball.getHeight());
+	}
+}
+
