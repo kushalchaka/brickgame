@@ -68,6 +68,9 @@ public class BrickPanel extends JPanel implements Runnable
 		{
 			balls.move();
 		}
+		if (paddle.cheat) {
+        paddle.setPos(ball.getBounds().x);
+    }
 	}
 	
 	private void newBall() 

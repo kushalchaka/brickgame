@@ -24,7 +24,7 @@ public class Ball
 	{
 		try 
 		{
-			ball = ImageIO.read(new File("src/images/redball.png"));
+			ball = ImageIO.read(new File("images/ball.png"));
 		} 
 		catch (IOException e) 
 		{

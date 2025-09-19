@@ -25,7 +25,7 @@ public class Paddle
 	{
 		try 
 		{
-			paddle = ImageIO.read(new File("src/images/paddle.png"));
+			paddle = ImageIO.read(new File("images/paddle.png"));
 			xPos = rand.nextInt(BrickPanel.WIDTH - paddle.getWidth());
 			yPos = BrickPanel.HEIGHT - paddle.getHeight();
 		} 
