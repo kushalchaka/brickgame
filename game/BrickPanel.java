@@ -18,12 +18,12 @@ public class BrickPanel extends JPanel implements Runnable
 	public static int score = 0;
 	public double speed = 2;
 	final ImageIcon icon = new ImageIcon("src/images/win.gif");
-    static final int BALLDIAMETER = 30;
-    private Balls balls;
-    private Random rand = new Random();
-    private int rand1, rand2;
-    private int temp = 0;
-    private boolean shouldDrawRect = false;
+	static final int BALLDIAMETER = 30;
+	private Balls balls;
+	private Random rand = new Random();
+	private int rand1, rand2;
+	private int temp = 0;
+	private boolean shouldDrawRect = false;
     
 	public BrickPanel() 
 	{
@@ -66,7 +66,7 @@ public class BrickPanel extends JPanel implements Runnable
 		ball.move();
 		if(shouldDrawRect && temp >= 2)
 		{
-			balls.move();
+			//balls.move();
 		}
 		if (paddle.cheat) {
         paddle.setPos(ball.getBounds().x);
@@ -77,7 +77,7 @@ public class BrickPanel extends JPanel implements Runnable
 	{
 		if (shouldDrawRect)
 		{
-			balls = new Balls(300, 250, BALLDIAMETER, BALLDIAMETER);
+			//balls = new Balls(300, 250, BALLDIAMETER, BALLDIAMETER);
 			temp++;
 		}
 	}
@@ -94,9 +94,9 @@ public class BrickPanel extends JPanel implements Runnable
 		{
 			temp++;
 		}
-		if (shouldDrawRect && temp >= 2 && balls.intersects(pRect)) 
+		if (shouldDrawRect && temp >= 2 /*&& balls.intersects(pRect)*/)
 		{
-			balls.yVelocity *= -1;
+			//balls.yVelocity *= -1;
 		}
 		if (ballRect.y > HEIGHT - ballRect.getHeight())
 		{
@@ -104,7 +104,7 @@ public class BrickPanel extends JPanel implements Runnable
 			if (restart == 0)
 			{
 				ball.setPos(300, 250, 1);
-				ball.move();
+			//	ball.move();
 				gameSetup();
 				repaint();
 			}
@@ -112,7 +112,7 @@ public class BrickPanel extends JPanel implements Runnable
 			{
 				System.exit(0);
 			}
-		}
+		}/*
 		if (shouldDrawRect && temp >= 2 && balls.y > HEIGHT - balls.getHeight())
 		{
 			int restart = JOptionPane.showConfirmDialog(null, "You have crashed. Play Again?", "Game Over", JOptionPane.YES_NO_OPTION);
@@ -127,7 +127,7 @@ public class BrickPanel extends JPanel implements Runnable
 			{
 				System.exit(0);
 			}
-		}
+		}*/
 		for (int row = 0; row < numRows; row++)
 		{
 			for (int col = 0; col < numCols; col++)
@@ -146,7 +146,7 @@ public class BrickPanel extends JPanel implements Runnable
 				}
 			}
 		}
-		for (int row = 0; row < numRows; row++)
+		/*for (int row = 0; row < numRows; row++)
 		{
 			for (int col = 0; col < numCols; col++)
 			{
@@ -156,21 +156,21 @@ public class BrickPanel extends JPanel implements Runnable
 					if (shouldDrawRect && temp >= 2 && balls.y <= brickRect.getHeight() + brickRect.y && balls.getCenterX() > brickRect.x && balls.getCenterX()  < brickRect.width + brickRect.x)
 					{
 						bricks[row][col].visible = false;
-						balls.yVelocity *= -1;
-						balls.setSpeed(0.25,0.25);
+						//balls.yVelocity *= -1;
+						//balls.setSpeed(0.25,0.25);
 						speed += 0.25;
 						score++;
 					}
 				}
 			}
-		}
+		}*/
 		if (score == 49)
 		{
 			int restart = JOptionPane.showConfirmDialog(null, "You Won!. Press OK to Play Again or Cancel to Exit", "Winner", JOptionPane.OK_CANCEL_OPTION, JOptionPane.NO_OPTION, icon);
 			if (restart == 0)
 			{
 				ball.setPos(300, 250, 1);
-				ball.move();
+				//ball.move();
 				gameSetup();
 				repaint();
 			}
@@ -211,7 +211,7 @@ public class BrickPanel extends JPanel implements Runnable
 		ball.draw(g);
 		if (shouldDrawRect && temp >= 2)
 		{
-			balls.draw(g);
+			//balls.draw(g);
 		}
 		g.setColor(Color.RED);
 		g.setFont(new Font("Ink Free", Font.BOLD, 35));
